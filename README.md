@@ -1,5 +1,5 @@
 # ts-new
-Bassicly write code like `rustlang`. 
+basically write code like `rustlang`. 
 
 ## Features
 nothing yet
