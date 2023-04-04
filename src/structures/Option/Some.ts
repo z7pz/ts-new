@@ -16,7 +16,10 @@ export class Some<T> implements IOption<T> {
 		return false
 	}
 	unwrapOr<V>(_: V): T {
-		return this.value;
+		return this.unwrap();
+	}
+	unwrapOrElse<V>(_: () => V) {
+		return this.unwrap();
 	}
 	unwrap() {
 		return this.value;

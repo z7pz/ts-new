@@ -4,10 +4,13 @@ import { Some } from "./Some";
 export class None implements IOption<any> {
 	constructor() {}
 	isSomeAnd(_fn: (v: any) => boolean): this is Some<any> {
-		return false
+		return false;
 	}
 	unwrapOr<V>(v: V): V {
 		return v;
+	}
+	unwrapOrElse<V>(fn: () => V) {
+		return fn();
 	}
 	unwrap() {
 		throw Error("None has been triggered");

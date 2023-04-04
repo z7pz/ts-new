@@ -21,6 +21,9 @@ export class Option<T> implements IOption<T> {
 	unwrapOr<V>(v: V): T {
 		return this.unwrapOr(v);
 	}
+	unwrapOrElse<V>(fn: () => V): T | V {
+		return this.value.unwrapOrElse(fn);
+	}
 	isSome(): this is Some<T> {
 		return this.value.isSome();
 	}
@@ -28,6 +31,6 @@ export class Option<T> implements IOption<T> {
 		return this.value.isNone();
 	}
 	isSomeAnd(fn: (v: T) => boolean): this is Some<T> {
-		return this.isSomeAnd(fn);
+		return this.value.isSomeAnd(fn);
 	}
 }
