@@ -15,10 +15,10 @@ export class Option<T> {
 			void
 		>;
 	}
-	isSome() {
+	isSome(): this is Some<T> {
 		return this.value.isSome();
 	}
-	isNone() {
+	isNone(): this is None {
 		return this.value.isNone();
 	}
 }
