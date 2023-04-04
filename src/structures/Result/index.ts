@@ -2,6 +2,7 @@ import { Option } from "..";
 import { Err, err } from "./Err";
 import { type Ok, ok } from "./Ok";
 
+export type Fn<T> = (...args: unknown[]) => T;
 export interface IResult<T, E> {
 	isOk(): this is Ok<T>;
 	isErr(): this is Err<E>;
@@ -11,7 +12,7 @@ export interface IResult<T, E> {
 
 export class Result<T, E> implements IResult<T, E> {
 	protected readonly value: Err<E> | Ok<T>;
-	constructor(fn: (...args: unknown[]) => T) {
+	constructor(fn: Fn<T>) {
 		try {
 			this.value = ok(fn());
 		} catch (e: unknown) {
@@ -34,3 +35,6 @@ export class Result<T, E> implements IResult<T, E> {
 	
 }
 
+export  function result<T>(fn: Fn<T>) {
+	return new Result(fn);
+}

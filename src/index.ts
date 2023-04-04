@@ -10,5 +10,6 @@ console.log(
 	GOOD.unwrap(),
 	BAD.unwrapOrElse(() => {
 		console.log("wtf");
+		return "test"
 	})
 );
