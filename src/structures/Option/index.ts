@@ -15,6 +15,10 @@ export class Option<T> {
 			void
 		>;
 	}
+
+	unwrapOr(v: T): T {
+		return this.unwrapOr(v);
+	}
 	isSome(): this is Some<T> {
 		return this.value.isSome();
 	}

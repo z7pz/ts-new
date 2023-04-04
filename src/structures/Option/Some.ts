@@ -1,4 +1,6 @@
-export class Some<T> {
+import { IOption } from "./IOption";
+
+export class Some<T> implements IOption<T> {
 	value: T;
 	constructor(value: T) {
 		this.value = value;
@@ -9,6 +11,9 @@ export class Some<T> {
 
 	isNone(): false {
 		return false
+	}
+	unwrapOr<V>(_: V): T {
+		return this.value;
 	}
 	unwrap() {
 		return this.value;

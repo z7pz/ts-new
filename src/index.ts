@@ -6,4 +6,4 @@ let GOOD = asd.find((v) => v == "test");
 //  ^?
 let BAD = asd.find((v) => "");
 //  ^?
-console.log(GOOD.unwrap(), BAD);
+console.log(GOOD.unwrap(), BAD.unwrapOr("test"));
