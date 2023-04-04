@@ -1,6 +1,15 @@
 import { type Some, some } from "./Some";
 import { type None, none } from "./None";
-import { IOption } from "./IOption";
+
+export interface IOption<T> {
+	unwrap(): T;
+	unwrapOr<V>(v: V): T | V;
+	unwrapOrElse<V>(fn: () => V): V | T;
+	isNone(): this is None;
+	isSome(): this is Some<T>;
+	isSomeAnd(fn: (v: T) => boolean): this is Some<T>;
+}
+
 export class Option<T> implements IOption<T> {
 	protected readonly value: Some<T> | None;
 	constructor(v: T | undefined | null) {
@@ -33,4 +42,10 @@ export class Option<T> implements IOption<T> {
 	isSomeAnd(fn: (v: T) => boolean): this is Some<T> {
 		return this.value.isSomeAnd(fn);
 	}
+}
+
+
+export {
+	Some,
+	None
 }

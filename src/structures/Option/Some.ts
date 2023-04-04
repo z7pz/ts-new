@@ -1,4 +1,4 @@
-import { IOption } from "./IOption";
+import { IOption } from ".";
 
 export class Some<T> implements IOption<T> {
 	value: T;

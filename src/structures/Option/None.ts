@@ -1,9 +1,8 @@
-import { IOption } from "./IOption";
-import { Some } from "./Some";
+import { IOption } from ".";
 
 export class None implements IOption<any> {
 	constructor() {}
-	isSomeAnd(_fn: (v: any) => boolean): this is Some<any> {
+	isSomeAnd(_fn: (v: any) => boolean) {
 		return false;
 	}
 	unwrapOr<V>(v: V): V {
