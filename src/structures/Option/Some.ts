@@ -8,12 +8,12 @@ export class Some<T> implements IOption<T> {
 	isSomeAnd(fn: (v: T) => boolean): this is Some<T> {
 		return fn(this.value);
 	}
-	isSome(): true {
-		return true
+	isSome() {
+		return true;
 	}
 
-	isNone(): false {
-		return false
+	isNone() {
+		return false;
 	}
 	unwrapOr<V>(_: V): T {
 		return this.unwrap();
@@ -29,5 +29,3 @@ export class Some<T> implements IOption<T> {
 export function some<T>(v: T) {
 	return new Some(v);
 }
-
-
