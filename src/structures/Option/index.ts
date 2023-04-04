@@ -18,8 +18,8 @@ export class Option<T> implements IOption<T> {
 		>;
 	}
 
-	unwrapOr<V>(v: V): T {
-		return this.unwrapOr(v);
+	unwrapOr<V>(v: V): T | V {
+		return this.value.unwrapOr(v);
 	}
 	unwrapOrElse<V>(fn: () => V): T | V {
 		return this.value.unwrapOrElse(fn);
