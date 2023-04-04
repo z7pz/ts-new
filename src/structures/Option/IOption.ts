@@ -6,4 +6,5 @@ export interface IOption<T> {
 	unwrapOr<V>(v: V): T | V;
 	isNone(): this is None;
 	isSome(): this is Some<T>;
+	isSomeAnd(fn: (v: T) => boolean): this is Some<T>;
 }

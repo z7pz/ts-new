@@ -5,6 +5,9 @@ export class Some<T> implements IOption<T> {
 	constructor(value: T) {
 		this.value = value;
 	}
+	isSomeAnd(fn: (v: T) => boolean): this is Some<T> {
+		return fn(this.value);
+	}
 	isSome(): true {
 		return true
 	}
