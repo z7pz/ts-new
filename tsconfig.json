@@ -22,7 +22,9 @@
 		"declaration": true,
 		"resolveJsonModule": true,
 		"declarationDir": "./dist/types",
-		"skipLibCheck": false
+		"skipLibCheck": false,
+		"preserveSymlinks": true,
+		"typeRoots": ["./src/utils/types"]
 	},
 	"ts-node": {
 		"esm": true
