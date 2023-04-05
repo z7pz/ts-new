@@ -9,7 +9,7 @@ let BAD = asd.find((v) => "");
 console.log(
 	GOOD.unwrap(),
 	BAD.unwrapOrElse(() => {
-		console.log("wtf");
+		console.log("hello from UnwrapOrElse")
 		return "test"
 	})
 );
