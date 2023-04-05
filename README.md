@@ -2,9 +2,8 @@
 basically write code like `rustlang`. 
 
 ## Features
-nothing yet
+- support basic functionality of `Option`
+- support types for either `Option` and `Result`
 
 ## Roadmap
-- support basic functionality of `Option`
 - support basic functionality of `Result`
-- support types for either `Option` and `Result`
