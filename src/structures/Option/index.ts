@@ -4,10 +4,10 @@ import { type None, none } from "./None";
 export interface IOption<T> {
 	unwrap(): T;
 	unwrapOr<V>(v: V): T | V;
-	unwrapOrElse<V>(fn: () => V): V | T;
+	unwrapOrElse<V>(fn: TSNew.Fn<T, []>): V | T;
 	isNone(): this is None;
 	isSome(): this is Some<T>;
-	isSomeAnd(fn: (v: T) => boolean): this is Some<T>;
+	isSomeAnd(fn: TSNew.Fn<boolean, [T]>): this is Some<T>;
 }
 
 export class Option<T> implements IOption<T> {
@@ -20,7 +20,7 @@ export class Option<T> implements IOption<T> {
 		}
 	}
 
-	unwrap() {
+	unwrap(): T {
 		return this.value.unwrap() as Exclude<
 			ReturnType<typeof this.value.unwrap>,
 			void
@@ -30,22 +30,18 @@ export class Option<T> implements IOption<T> {
 	unwrapOr<V>(v: V): T | V {
 		return this.value.unwrapOr(v);
 	}
-	unwrapOrElse<V>(fn: () => V): T | V {
+	unwrapOrElse<V>(fn: TSNew.Fn<V, []>): T | V {
 		return this.value.unwrapOrElse(fn);
-	}
-	isSome(): this is Some<T> {
-		return this.value.isSome();
 	}
 	isNone(): this is None {
 		return this.value.isNone();
 	}
-	isSomeAnd(fn: (v: T) => boolean): this is Some<T> {
+	isSome(): this is Some<T> {
+		return this.value.isSome();
+	}
+	isSomeAnd(fn: TSNew.Fn<boolean, [T]>): this is Some<T> {
 		return this.value.isSomeAnd(fn);
 	}
 }
 
-
-export {
-	Some,
-	None
-}
+export { Some, None };

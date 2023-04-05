@@ -2,24 +2,24 @@ import { IOption } from ".";
 
 export class None implements IOption<any> {
 	constructor() {}
-	isSomeAnd(_fn: (v: any) => boolean) {
-		return false;
+
+	unwrap() {
+		throw Error("Unwrap called on None");
 	}
 	unwrapOr<V>(v: V): V {
 		return v;
 	}
-	unwrapOrElse<V>(fn: () => V) {
+	unwrapOrElse<V>(fn: TSNew.Fn<V, []>) {
 		return fn();
 	}
-	unwrap() {
-		throw Error("None has been triggered");
+	isNone(): true {
+		return true;
 	}
-	isSome() {
+	isSome(): false {
 		return false;
 	}
-
-	isNone() {
-		return true;
+	isSomeAnd(_fn: TSNew.Fn<boolean, [any]>): false {
+		return false;
 	}
 }
 

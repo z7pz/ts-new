@@ -3,7 +3,7 @@ import { IResult } from ".";
 import { Ok } from "./Ok";
 
 export class Err<E> implements IResult<undefined, E> {
-	err: E;
+	protected readonly err: E;
 	constructor(v: E) {
 		this.err = v;
 	}
