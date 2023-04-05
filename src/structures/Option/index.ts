@@ -10,6 +10,8 @@ export interface IOption<T> {
 	isSomeAnd(fn: TSNew.Fn<boolean, [T]>): this is Some<T>;
 	map<R>(fn: TSNew.Fn<R, [T]>): Option<R>;
 	or(or: Option<T>): Option<T>;
+	iter(): Generator<T>;
+	[Symbol.iterator](): Generator<T>;
 }
 
 export class Option<T> implements IOption<T> {
@@ -21,7 +23,6 @@ export class Option<T> implements IOption<T> {
 			this.value = none();
 		}
 	}
-
 	unwrap(): T {
 		return this.value.unwrap() as Exclude<
 			ReturnType<typeof this.value.unwrap>,
@@ -49,6 +50,12 @@ export class Option<T> implements IOption<T> {
 	}
 	or(or: Option<T>): Option<T> {
 		return this.value.or(or);
+	}
+	*iter(): Generator<T> {
+		return this.iter();
+	}
+	*[Symbol.iterator](): Generator<T> {
+		return this.value.iter();
 	}
 }
 

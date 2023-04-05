@@ -29,6 +29,12 @@ export class Some<T> implements IOption<T> {
 	or(_or: Option<T>): Option<T> {
 		return this as unknown as Option<T>;
 	}
+	*iter(): Generator<T> {
+		yield this.value;
+	}
+	*[Symbol.iterator](): Generator<T> {
+		yield this.value;
+	}
 }
 
 export function some<T>(v: T) {

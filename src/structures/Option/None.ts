@@ -26,6 +26,12 @@ export class None<T = any> implements IOption<T> {
 	or(or: Option<T>): Option<T> {
 		return or;
 	}
+	*iter(): Generator<never> {
+		// nothing to yield
+	}
+	*[Symbol.iterator](): Generator<never> {
+		// nothing to yield
+	}
 }
 
 export function none() {
