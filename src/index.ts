@@ -1,6 +1,7 @@
 import "./utils";
+
 let asd = ["test"];
-let GOOD = asd.find((v) => v == "test");
+let GOOD = asd.shift();
 //  ^?
 let BAD = asd.find((v) => "");
 //  ^?
