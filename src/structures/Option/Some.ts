@@ -26,6 +26,9 @@ export class Some<T> implements IOption<T> {
 	map<R>(fn: TSNew.Fn<R, [T]>): Option<R> {
 		return new Option(fn(this.value));
 	}
+	or(_or: Option<T>): Option<T> {
+		return this as unknown as Option<T>;
+	}
 }
 
 export function some<T>(v: T) {

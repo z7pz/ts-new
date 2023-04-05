@@ -23,6 +23,9 @@ export class None<T = any> implements IOption<T> {
 	map<R>(_fn: TSNew.Fn<R, [T]>): Option<R> {
 		return this as unknown as Option<R>;
 	}
+	or(or: Option<T>): Option<T> {
+		return or;
+	}
 }
 
 export function none() {
