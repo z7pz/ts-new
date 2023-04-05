@@ -1,11 +1,11 @@
-import { Option } from "..";
+import { IOption } from "structures/Option";
 import { Err, err } from "./Err";
 import { type Ok, ok } from "./Ok";
 export interface IResult<T, E> {
 	isOk(): this is Ok<T>;
 	isErr(): this is Err<E>;
 	unwrap(): T;
-	ok(): Option<T>;
+	ok(): IOption<T>;
 }
 
 export class Result<T, E> implements IResult<T, E> {
@@ -27,7 +27,7 @@ export class Result<T, E> implements IResult<T, E> {
 	unwrap(): T {
 		throw new Error("Method not implemented.");
 	}
-	ok(): Option<T> {
+	ok(): IOption<T> {
 		throw new Error("Method not implemented.");
 	}
 	

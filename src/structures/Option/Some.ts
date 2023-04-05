@@ -23,11 +23,11 @@ export class Some<T> implements IOption<T> {
 	isSomeAnd(fn: TSNew.Fn<boolean, [T]>): this is Some<T> {
 		return fn(this.value);
 	}
-	map<R>(fn: TSNew.Fn<R, [T]>): Option<R> {
-		return new Option(fn(this.value));
+	map<R>(fn: TSNew.Fn<R, [T]>): IOption<R> {
+		return Option(fn(this.value));
 	}
-	or(_or: Option<T>): Option<T> {
-		return this as unknown as Option<T>;
+	or(_or: IOption<T>): IOption<T> {
+		return this as unknown as IOption<T>;
 	}
 	*iter(): Generator<T> {
 		yield this.value;

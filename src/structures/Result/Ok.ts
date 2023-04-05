@@ -1,4 +1,4 @@
-import { Option } from "structures/Option";
+import { IOption } from "structures/Option";
 import { IResult } from ".";
 import { Err } from "./Err";
 
@@ -16,7 +16,7 @@ export class Ok<T> implements IResult<T, undefined> {
 	unwrap(): T {
 		throw new Error("Method not implemented.");
 	}
-	ok(): Option<T> {
+	ok(): IOption<T> {
 		throw new Error("Method not implemented.");
 	}
 }

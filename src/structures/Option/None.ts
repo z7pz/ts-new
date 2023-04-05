@@ -1,4 +1,4 @@
-import { IOption, Option } from ".";
+import { IOption } from ".";
 
 export class None<T = any> implements IOption<T> {
 	constructor() {}
@@ -20,10 +20,10 @@ export class None<T = any> implements IOption<T> {
 	isSomeAnd(_fn: TSNew.Fn<boolean, [any]>): false {
 		return false;
 	}
-	map<R>(_fn: TSNew.Fn<R, [T]>): Option<R> {
-		return this as unknown as Option<R>;
+	map<R>(_fn: TSNew.Fn<R, [T]>): IOption<R> {
+		return this as unknown as IOption<R>;
 	}
-	or(or: Option<T>): Option<T> {
+	or(or: IOption<T>): IOption<T> {
 		return or;
 	}
 	*iter(): Generator<never> {
