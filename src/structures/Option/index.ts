@@ -8,6 +8,7 @@ export interface IOption<T> {
 	isNone(): this is None;
 	isSome(): this is Some<T>;
 	isSomeAnd(fn: TSNew.Fn<boolean, [T]>): this is Some<T>;
+	map<R>(fn: TSNew.Fn<R, [T]>): Option<R>;
 }
 
 export class Option<T> implements IOption<T> {
@@ -41,6 +42,9 @@ export class Option<T> implements IOption<T> {
 	}
 	isSomeAnd(fn: TSNew.Fn<boolean, [T]>): this is Some<T> {
 		return this.value.isSomeAnd(fn);
+	}
+	map<R>(fn: TSNew.Fn<R, [T]>): Option<R> {
+		return this.value.map(fn);
 	}
 }
 

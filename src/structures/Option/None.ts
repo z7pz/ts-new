@@ -1,9 +1,8 @@
-import { IOption } from ".";
+import { IOption, Option } from ".";
 
-export class None implements IOption<any> {
+export class None<T = any> implements IOption<T> {
 	constructor() {}
-
-	unwrap() {
+	unwrap(): T {
 		throw Error("Unwrap called on None");
 	}
 	unwrapOr<V>(v: V): V {
@@ -20,6 +19,9 @@ export class None implements IOption<any> {
 	}
 	isSomeAnd(_fn: TSNew.Fn<boolean, [any]>): false {
 		return false;
+	}
+	map<R>(_fn: TSNew.Fn<R, [T]>): Option<R> {
+		return this as unknown as Option<R>;
 	}
 }
 

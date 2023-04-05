@@ -1,4 +1,4 @@
-import { IOption } from ".";
+import { IOption, Option } from ".";
 
 export class Some<T> implements IOption<T> {
 	value: T;
@@ -22,6 +22,9 @@ export class Some<T> implements IOption<T> {
 	}
 	isSomeAnd(fn: TSNew.Fn<boolean, [T]>): this is Some<T> {
 		return fn(this.value);
+	}
+	map<R>(fn: TSNew.Fn<R, [T]>): Option<R> {
+		return new Option(fn(this.value));
 	}
 }
 
