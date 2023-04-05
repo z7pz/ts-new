@@ -1,5 +1,4 @@
 import "./utils";
-import "./utils/types/recommended";
 let asd = ["test"];
 
 let GOOD = asd.find((v) => v == "test");
@@ -11,5 +10,5 @@ console.log(
 	BAD.unwrapOrElse(() => {
 		console.log("hello from UnwrapOrElse")
 		return "test"
-	})
+	});
 );
