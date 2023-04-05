@@ -1,4 +1,4 @@
 /// <reference path="./utils.d.ts" />
 interface String {
-	parse(): void;
+	parse(): TSNew.Option<number>;
 }
