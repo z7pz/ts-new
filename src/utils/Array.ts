@@ -1,3 +1,4 @@
+import "./types/Array";
 import { Option } from "../structures/Option";
 
 let find = Array.prototype.find
